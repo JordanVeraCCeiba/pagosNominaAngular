@@ -1,0 +1,70 @@
+<div class="container container mt-4 mb-5">
+ 
+<form [formGroup]="empleadoForm" (ngSubmit)="guardarEmpleado()">
+  <br>
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <label>Nombre:</label>
+    </div>
+    <div class="col-sm-4">
+      <input autocomplete="off" validar type="text" id="nombre" name="nombre" placeholder="Nombre"
+        class="form-control" formControlName="nombre">
+    </div>
+  </div>
+  
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <label>Apellido:</label>
+    </div>
+    <div class="col-sm-4">
+      <input autocomplete="off" validar type="text" id="apellido" name="apellido" placeholder="Apellido"
+        class="form-control" formControlName="apellido">
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <label>Cedula:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="number" id="cedula" name="cedula" placeholder="Cedula"
+        class="form-control" formControlName="cedula">
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <label>Fecha de Nacimiento:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="date" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de Nacimiento"
+        class="form-control" formControlName="fechaNacimiento">
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <label>Salario:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="number" id="salario" name="salario" placeholder="Salario"
+        class="form-control" formControlName="salario">
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-sm-2">
+      <label>Cargo:</label>
+    </div>
+    <div class="col-sm-4">
+      <input autocomplete="off" validar type="text" id="cargo" name="cargo" placeholder="Cargo"
+        class="form-control" formControlName="cargo">
+    </div>
+  </div>
+  <button *ngIf="esFormCrear" type="submit" class="btn btn-dark mb-2" [disabled]="!empleadoForm.valid">Registrar</button>
+  <button *ngIf="!esFormCrear" type="submit" class="btn btn-dark mb-2" [disabled]="!empleadoForm.valid">Actualizar</button>
+  <div id="msjError" *ngIf="error" class="alert alert-danger alert-dissmissible fade show error" role="alert">
+    {{ mensaje }}
+  </div>
+  <div id="msjExito" *ngIf="exito" class="alert alert-success alert-dissmissible fade" role="alert">
+    {{ mensaje }}
+  </div>
+</form>
+
+</div>

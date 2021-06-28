@@ -1,0 +1,27 @@
+<div class="container container mt-4 mb-5">
+     
+    <form [formGroup]="pagarSalarioForm" (ngSubmit)="pagar()">
+
+      <div class="row mb-2">
+        <div class="col-sm-2">
+          <label>Salario:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="number" id="pagoEmpleado" name="pagoEmpleado" placeholder="Salario"
+            class="form-control" formControlName="pagoEmpleado">
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-dark mb-2" >Pagar</button>
+
+      <div id="msjError" *ngIf="error" class="alert alert-danger alert-dissmissible fade show error" role="alert">
+        {{ mensaje }}
+      </div>
+      <div id="msjExito" *ngIf="exito" class="alert alert-success alert-dissmissible fade" role="alert">
+        {{ mensaje }}
+      </div>
+
+    </form>
+    
+    </div>
+    

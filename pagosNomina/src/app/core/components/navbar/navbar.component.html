@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <a class="navbar-brand" id="navTitle" [routerLink]="'.'">Pagos Nomina ADN</a>
+
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li *ngFor="let item of items" class="nav-item active">
+        <a class="nav-link" [routerLink]="item.url" routerLinkActive="active" (click)="isMenuCollapsed = true">{{item.nombre}}</a>
+      </li>
+    </ul>
+  </div>
+  
+</nav>

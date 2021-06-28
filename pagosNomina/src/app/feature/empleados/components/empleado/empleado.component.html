@@ -1,0 +1,29 @@
+<ul ngbNav #nav="ngbNav" class="nav nav-pills mb-3">
+  <li ngbNavItem>
+    <a ngbNavLink id="linkCrearEmpleado" 
+       style="margin-left: 15px;" 
+       class="nav-item" 
+       routerLink="./crear">
+       Crear empleado
+    </a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink id="linkListarEmpleado" 
+       style="margin-left: 15px;" 
+       class="nav-item" 
+       routerLink="./listar">
+       Listar empleado
+    </a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink id="linkListarNominaEmpleados" 
+       style="margin-left: 15px;" 
+       class="nav-item" 
+       routerLink="./listarNomina">
+       Listar Nomina
+    </a>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+
+<router-outlet></router-outlet>

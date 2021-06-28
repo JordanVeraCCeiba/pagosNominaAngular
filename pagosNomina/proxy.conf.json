@@ -1,0 +1,15 @@
+{
+ 
+  "/SuperfinancieraWebServiceTRM": {
+    "target": "https://www.superfinanciera.gov.co",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+
+  "/empleado-service": {
+    "target": "http://localhost:8080",
+    "logLevel": "debug"
+  }
+
+}
