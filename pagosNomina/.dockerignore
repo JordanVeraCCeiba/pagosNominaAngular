@@ -1,0 +1,15 @@
+.git
+
+.editorconfig
+
+/gitignore
+
+/e2e
+
+/docs
+
+/node_modules
+
+*.zip
+
+*.md

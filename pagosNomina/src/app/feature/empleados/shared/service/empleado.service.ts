@@ -4,6 +4,7 @@ import { HttpService } from '@core-service/http.service';
 import { Empleado } from '../model/empleado';
 import { Pagar } from '../model/pagar';
 import { Nomina } from '../model/nomina';
+import { fechaNomina } from '../model/fechaNomina';
 
 @Injectable()
 export class EmpleadoService {
@@ -18,6 +19,22 @@ export class EmpleadoService {
 
   public consultarNominaEmpleados() {
     return this.http.doGet<Nomina[]>(this._baseUrl+`pagos/nomina`, this.http.optsName('consultar nomina empleados'));
+  }
+
+  public consultarNominaEmpleadosEntreFechas(fechaNomina: fechaNomina) {
+    var fecha = fechaNomina.fecha1.split('-');
+    var fechaR =  (fecha[2] + '/' + fecha[1] + '/' + fecha[0]);
+    fechaR = fechaR.substr(-10);
+    fechaNomina.fecha1 = fechaR;
+    //alert("fecha : "+fechaR);
+    var fecha = fechaNomina.fecha2.split('-');
+    var fechaR =  (fecha[2] + '/' + fecha[1] + '/' + fecha[0]);
+    fechaR = fechaR.substr(-10);
+    fechaNomina.fecha2 = fechaR;
+    //alert("fecha2 : "+fechaR);
+
+    return this.http.doPost<fechaNomina, any>(this._baseUrl+`pagos/nomina/fechas`,fechaNomina, 
+                                                this.http.optsName('consultar nomina empleados entre fechas'));
   }
 
   public guardar(empleado: Empleado) {

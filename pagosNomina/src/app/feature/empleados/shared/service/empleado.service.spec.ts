@@ -27,7 +27,7 @@ describe('EmpleadoService', () => {
 
   it('deberia listar empleado', () => {
     const dummyEmpleado = [
-      new Empleado('Jordan', "Vera",1090506292, "25/03/1997", 2000000,"Arquitecto Desarrollador"), new Empleado('Jordan', "Vera",1090506292, "25/03/1997", 2000000,"Arquitecto Desarrollador")
+      new Empleado('Jordan', "Vera",1090506295, "25/03/1997", 2000000,"Arquitecto Desarrollador"), new Empleado('Jordan', "Vera",1090506293, "25/03/1997", 2000000,"Arquitecto Desarrollador")
     ];
     service.consultar().subscribe(Empleados => {
       expect(Empleados.length).toBe(2);

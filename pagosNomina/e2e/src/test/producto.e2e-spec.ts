@@ -3,6 +3,7 @@ import { AppPage } from '../app.po';
 import { EmpleadoPage } from '../page/empleado/empleado.po';
 
 describe('workspace-project Empleado', () => {
+
     let page: AppPage;
     let navBar: NavbarPage;
     let Empleado: EmpleadoPage;
@@ -41,14 +42,14 @@ describe('workspace-project Empleado', () => {
         page.navigateTo();
         navBar.clickBotonEmpleados();
         Empleado.clickBotonListarEmpleados();
-        expect(50).toBe(Empleado.contarEmpleados());
+        expect(0).toBe(Empleado.contarEmpleados());
     });
 
     it('Deberia actualizar Empleado', () => {
        
         const NOMBRE = 'Jordan';
         const APELLIDO = 'Vera';
-        const CEDULA = 1090506292;
+        const CEDULA = 4234;
         const FECHA_NACIMIENTO = '25/03/1997';
         const SALARIO = 2000000;
         const CARGO = 'Arquitecto Desarrollador';
@@ -69,4 +70,6 @@ describe('workspace-project Empleado', () => {
         // Adicionamos las validaciones despues de la creación
         //expect(Empleado.getMsjExito()).toEqual("Empleado guardado exitosamente");
     });
+
+    
 });

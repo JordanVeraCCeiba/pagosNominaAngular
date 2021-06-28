@@ -16,7 +16,7 @@ describe('ListarNominaComponent', () => {
   let fixture: ComponentFixture<ListarNominaComponent>;
   let empleadoService: EmpleadoService;
 
-  const listarNomina: Nomina[] = [new Nomina(1, 10,"25/03/1997", 184000, 80000,80000)];
+  const listarNomina: Nomina[] = [new Nomina(1, 1,"25/03/2021", 2000000, null,null)];
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('ListarNominaComponent', () => {
       imports: [
         CommonModule,
         HttpClientModule,
-        RouterTestingModule,
+        RouterTestingModule, 
         NgbModule,
         NgbNavModule
       ],
