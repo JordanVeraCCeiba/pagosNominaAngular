@@ -6,16 +6,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-listar-nomina',
-  templateUrl: './listar-nomina.component.html',
-  styleUrls: ['./listar-nomina.component.css']
+  templateUrl: './listar-nomina.component.html'
 })
+
 export class ListarNominaComponent implements OnInit {
   
-  public listaNomina: Observable<Nomina[]>;
   nominaListForm: FormGroup;
+  public listaNomina: Observable<Nomina[]>;
+
   constructor(protected empleadoService: EmpleadoService) {}
 
   ngOnInit() {
+    this.listaNomina = this.empleadoService.consultarNominaEmpleados();
     this.construirFormularioEmpleado();
   }
 

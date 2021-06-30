@@ -1,6 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-
 import { CrearEmpleadoComponent } from './crear-empleado.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('CrearEmpleadoComponent', () => {
+
   let component: CrearEmpleadoComponent;
   let fixture: ComponentFixture<CrearEmpleadoComponent>;
   let empleadoService: EmpleadoService;
@@ -60,4 +60,5 @@ describe('CrearEmpleadoComponent', () => {
     expect(component.empleadoForm.valid).toBeTruthy();
     component.guardarEmpleado();
   });
+  
 });

@@ -3,10 +3,11 @@ import { EmpleadoService } from '../../shared/service/empleado.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
+const PAGO_REALIZADO_CON_EXITO = "Pago realizado con exito";
+
 @Component({
   selector: 'app-pagar-nomina',
-  templateUrl: './pagar-nomina.component.html',
-  styleUrls: ['./pagar-nomina.component.css']
+  templateUrl: './pagar-nomina.component.html'
 })
 export class PagarNominaComponent implements OnInit {
   
@@ -23,28 +24,25 @@ export class PagarNominaComponent implements OnInit {
     this.construirFormularioPagar();
   }
 
-  pagar(){
-    this.pagarEmpleado();
-  }
-
   pagarEmpleado() {
-    this.empleadoServices.pagar(this.pagarSalarioForm.value, this.router.snapshot.params.id).subscribe(
-      response => {
-        console.log('Respuesta: ' + response)
-        this.error = false;
-        this.mensaje = "PAGO EXITOSO";
-      },
-      err => { 
-        this.mensaje = err.error.mensaje;
-        this.error = true;
-        this.exito = false;
-      }
-    );
+     this.empleadoServices.pagar(this.pagarSalarioForm.value, this.router.snapshot.params.id).subscribe(
+       response => {
+         this.mensaje = PAGO_REALIZADO_CON_EXITO;
+         console.log('Respuesta: ' + response);
+         this.exito = true;
+         this.error = false;
+       },
+       err => { 
+         this.mensaje = err.error.mensaje;
+         this.error = true;
+         this.exito = false;
+       }
+     );
   }
 
   construirFormularioPagar() {
     this.pagarSalarioForm = new FormGroup({
-      pagoEmpleado: new FormControl('', [Validators.required, Validators.max(100000000), Validators.min(1)])
+      pagoEmpleado: new FormControl('', [Validators.required, Validators.max(10000000000), Validators.min(1)])
     });
   }
 

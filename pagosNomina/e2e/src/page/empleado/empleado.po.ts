@@ -1,6 +1,7 @@
 import { by, element } from 'protractor';
 
 export class EmpleadoPage {
+
     private linkCrearEmpleado = element(by.xpath('//a[. = "Crear Empleado"]'));
     private linkListarEmpleados = element(by.xpath('//a[. = "Listar Empleados"]'));
     private linkActualizarEmpleados = element(by.id('linkActualizarEmpleado'));
@@ -12,11 +13,8 @@ export class EmpleadoPage {
     private inputSalario = element(by.id('salario'));
     private inputCargo = element(by.id('cargo'));
 
-    private listaEmpleados = element.all(by.css('#trListar'));
-
     private botonGuardarEmpleado = element(by.xpath('//button[. = "Registrar"]'));
     private botonActualizarEmpleado = element(by.xpath('//button[. = "Actualizar"]'));
-
 
     async clickBotonCrearEmpleado() {
         await this.linkCrearEmpleado.click();
@@ -63,10 +61,11 @@ export class EmpleadoPage {
     }
 
     async contarEmpleados() {
-        return this.listaEmpleados.count();
+        return element.all(by.css('#trListar'));
     }
 
-    getMsjExito() {
-        return element(by.id('msjExito')).getText() as Promise<string>;
+    async getMsjExito() {
+        return element(by.css('#msjExito')).getText() as Promise<string>;
     }
+
 }

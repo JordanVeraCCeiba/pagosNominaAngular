@@ -1,6 +1,6 @@
 <div class="container container mt-4 mb-5">
      
-    <form [formGroup]="pagarSalarioForm" (ngSubmit)="pagar()">
+    <form [formGroup]="pagarSalarioForm" (ngSubmit)="pagarEmpleado()">
 
       <div class="row mb-2">
         <div class="col-sm-2">
@@ -12,12 +12,13 @@
         </div>
       </div>
       
-      <button type="submit" class="btn btn-dark mb-2" >Pagar</button>
+      <button type="submit" class="btn btn-dark mb-2" [disabled]="!pagarSalarioForm.valid">Pagar</button>
 
       <div id="msjError" *ngIf="error" class="alert alert-danger alert-dissmissible fade show error" role="alert">
         {{ mensaje }}
       </div>
-      <div id="msjExito" *ngIf="exito" class="alert alert-success alert-dissmissible fade" role="alert">
+      
+      <div id="msjExito" *ngIf="exito" class="alert alert-success " role="alert">
         {{ mensaje }}
       </div>
 

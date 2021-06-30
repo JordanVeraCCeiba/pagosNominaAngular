@@ -15,8 +15,7 @@ describe('ListarNominaComponent', () => {
   let component: ListarNominaComponent;
   let fixture: ComponentFixture<ListarNominaComponent>;
   let empleadoService: EmpleadoService;
-
-  const listarNomina: Nomina[] = [new Nomina(1, 1,"25/03/2021", 2000000, null,null)];
+  const listarNomina: Nomina[] = [new Nomina(2, 1,"29/6/2021", 2300000, 100000,100000)];
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -47,8 +46,6 @@ describe('ListarNominaComponent', () => {
     expect(component).toBeTruthy();
     component.listaNomina.subscribe(resultado => {
       expect(1).toBe(resultado.length);
-  });
-
-});
+  });});
 
 });

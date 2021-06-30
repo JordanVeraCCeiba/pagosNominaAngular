@@ -17,12 +17,13 @@ export class HomeComponent implements OnInit {
     alertConfig.dismissible = false;
   }
 
+  static trm2: string;
   trm: string;
 
   ngOnInit() {
     this.soapCall();
   }
-
+  
   soapCall() {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', 
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 200) {
                 const xml = xmlhttp.responseXML;
+                HomeComponent.trm2 = xml.getElementsByTagName('return')[0].childNodes[4].textContent;
                 this.trm = xml.getElementsByTagName('return')[0].childNodes[4].textContent;
             }
         }

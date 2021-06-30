@@ -57,14 +57,18 @@
         class="form-control" formControlName="cargo">
     </div>
   </div>
+  
   <button *ngIf="esFormCrear" type="submit" class="btn btn-dark mb-2" [disabled]="!empleadoForm.valid">Registrar</button>
   <button *ngIf="!esFormCrear" type="submit" class="btn btn-dark mb-2" [disabled]="!empleadoForm.valid">Actualizar</button>
+
   <div id="msjError" *ngIf="error" class="alert alert-danger alert-dissmissible fade show error" role="alert">
-    {{ mensaje }}
+    {{mensaje}}
   </div>
-  <div id="msjExito" *ngIf="exito" class="alert alert-success alert-dissmissible fade" role="alert">
-    {{ mensaje }}
+  
+  <div id="msjExito" *ngIf="exito" class="alert alert-success" role="alert">
+    {{mensaje}}
   </div>
+
 </form>
 
 </div>

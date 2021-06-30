@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core-service/http.service';
-//import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Empleado } from '../model/empleado';
 import { Pagar } from '../model/pagar';
 import { Nomina } from '../model/nomina';
@@ -11,14 +11,12 @@ export class EmpleadoService {
 
   constructor(protected http: HttpService) {}
 
-  _baseUrl =  "http://localhost:8080/";  
- 
   public consultar() {
-    return this.http.doGet<Empleado[]>(this._baseUrl+`pagos/empleados`, this.http.optsName('consultar empleados'));
+    return this.http.doGet<Empleado[]>(`${environment.endpoint}/empleados`, this.http.optsName('consultar empleados'));
   }
 
   public consultarNominaEmpleados() {
-    return this.http.doGet<Nomina[]>(this._baseUrl+`pagos/nomina`, this.http.optsName('consultar nomina empleados'));
+    return this.http.doGet<Nomina[]>(`${environment.endpoint}/nomina`, this.http.optsName('consultar nomina empleados'));
   }
 
   public consultarNominaEmpleadosEntreFechas(fechaNomina: fechaNomina) {
@@ -26,14 +24,11 @@ export class EmpleadoService {
     var fechaR =  (fecha[2] + '/' + fecha[1] + '/' + fecha[0]);
     fechaR = fechaR.substr(-10);
     fechaNomina.fecha1 = fechaR;
-    //alert("fecha : "+fechaR);
     var fecha = fechaNomina.fecha2.split('-');
     var fechaR =  (fecha[2] + '/' + fecha[1] + '/' + fecha[0]);
     fechaR = fechaR.substr(-10);
     fechaNomina.fecha2 = fechaR;
-    //alert("fecha2 : "+fechaR);
-
-    return this.http.doPost<fechaNomina, any>(this._baseUrl+`pagos/nomina/fechas`,fechaNomina, 
+    return this.http.doPost<fechaNomina, any>(`${environment.endpoint}/nomina/fechas`,fechaNomina, 
                                                 this.http.optsName('consultar nomina empleados entre fechas'));
   }
 
@@ -41,7 +36,7 @@ export class EmpleadoService {
     var info = empleado.fechaNacimiento.split('-');
     empleado.fechaNacimiento =  (info[2] + '/' + info[1] + '/' + info[0]);
     empleado.fechaNacimiento = empleado.fechaNacimiento.substr(-10);
-    return this.http.doPost<Empleado, any>(this._baseUrl+`pagos/empleados`, empleado,
+    return this.http.doPost<Empleado, any>(`${environment.endpoint}/empleados`, empleado,
                                                 this.http.optsName('crear empleado'));
   }
 
@@ -49,17 +44,17 @@ export class EmpleadoService {
     var info = empleado.fechaNacimiento.split('-');
     empleado.fechaNacimiento =  (info[2] + '/' + info[1] + '/' + info[0]);
     empleado.fechaNacimiento = empleado.fechaNacimiento.substr(-10);
-    return this.http.doPut<Empleado, any>(this._baseUrl+`pagos/empleados/`+idEmpleado, empleado,
+    return this.http.doPut<Empleado, any>(`${environment.endpoint}/empleados/`+idEmpleado, empleado,
                                                 this.http.optsName('actualizar empelado'));
   }
 
   public obtenerData(idEmpleado: number) {
-    return this.http.doGetById(this._baseUrl+`pagos/empleados/`+idEmpleado,
+    return this.http.doGetById(`${environment.endpoint}/empleados/`+idEmpleado,
                                                 this.http.optsName('actualizar empleado'));
   }
 
   public eliminar(idEmpleado: number) {
-    return this.http.doDelete(this._baseUrl+`pagos/empleados/`+idEmpleado,
+    return this.http.doDelete(`${environment.endpoint}/empleados/`+idEmpleado,
                                                 this.http.optsName('eliminar empleado'));
   }
 
@@ -73,7 +68,7 @@ export class EmpleadoService {
     let year = date.getFullYear();
     pagar.fechaPago = day+"/"+month+"/"+year;
      
-    return this.http.doPost<Pagar, any>(this._baseUrl+`pagos/nomina`, pagar,
+    return this.http.doPost<Pagar, any>(`${environment.endpoint}/nomina`, pagar,
                                                 this.http.optsName('pagar empleado'));
   }
 

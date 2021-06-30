@@ -18,7 +18,7 @@ describe('workspace-project Empleado', () => {
 
         const NOMBRE = 'Jordan';
         const APELLIDO = 'Vera';
-        const CEDULA = 1090506292;
+        const CEDULA = 109050;
         const FECHA_NACIMIENTO = '25/03/1997';
         const SALARIO = 2000000;
         const CARGO = 'Arquitecto Desarrollador';
@@ -34,22 +34,21 @@ describe('workspace-project Empleado', () => {
         Empleado.ingresarCargo(CARGO)
          
         Empleado.clickBotonCrearEmpleado();
-        // Adicionamos las validaciones despues de la creación
-        //expect(Empleado.getMsjExito()).toEqual("Empleado guardado exitosamente");
+        expect(Empleado.getMsjExito()).toEqual("Empleado guardado exitosamente");
     });
 
     it('Deberia listar Empleados', () => {
         page.navigateTo();
         navBar.clickBotonEmpleados();
         Empleado.clickBotonListarEmpleados();
-        expect(0).toBe(Empleado.contarEmpleados());
+        expect(11).toBe(Empleado.contarEmpleados());
     });
 
     it('Deberia actualizar Empleado', () => {
        
         const NOMBRE = 'Jordan';
         const APELLIDO = 'Vera';
-        const CEDULA = 4234;
+        const CEDULA = 12345678;
         const FECHA_NACIMIENTO = '25/03/1997';
         const SALARIO = 2000000;
         const CARGO = 'Arquitecto Desarrollador';
@@ -67,8 +66,7 @@ describe('workspace-project Empleado', () => {
         Empleado.ingresarCargo(CARGO);
 
         Empleado.clickBotonActualizar();
-        // Adicionamos las validaciones despues de la creación
-        //expect(Empleado.getMsjExito()).toEqual("Empleado guardado exitosamente");
+        expect(Empleado.getMsjExito()).toEqual("Empleado actualizado exitosamente");
     });
 
     

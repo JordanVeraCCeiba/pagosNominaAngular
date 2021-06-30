@@ -7,9 +7,10 @@
     "changeOrigin": true
   },
 
-  "/empleado-service": {
+  "/pagos": {
     "target": "http://localhost:8080",
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "changeOrigin": true
   }
 
 }

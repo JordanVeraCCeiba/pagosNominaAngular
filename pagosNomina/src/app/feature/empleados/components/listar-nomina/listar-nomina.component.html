@@ -4,7 +4,7 @@
 
     <div class="row mb-2">
       <div class="col-sm-2">
-        <label>desde:</label>
+        <label>Desde:</label>
       </div>
       <div class="col-sm-4">
         <input validar type="date" id="fecha1" name="fecha1" placeholder="desde"
@@ -14,7 +14,7 @@
 
     <div class="row mb-2">
       <div class="col-sm-2">
-        <label>hasta:</label>
+        <label>Hasta:</label>
       </div>
       <div class="col-sm-4">
         <input validar type="date" id="fecha2" name="fecha2" placeholder="hasta"
@@ -22,11 +22,13 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-dark mb-2">Consultar</button>   
+    <button type="submit" class="btn btn-dark mb-2" [disabled]="!nominaListForm.valid">
+      Consultar
+    </button>   
 
   </form>
-
-  <table class="table table-hover">
+  
+  <table id="datatable" class="table table-striped table-hover">
     <caption> Pagos Nomina </caption>
     <thead>
       <tr>
@@ -43,11 +45,11 @@
         <td>{{nomina.id}}</td>
         <td>{{nomina.idEmpleado}}</td>
         <td>{{nomina.fechaPago}}</td>
-        <td>{{nomina.pagoEmpleado}}</td>
-        <td>{{nomina.salud}}</td>
-        <td>{{nomina.pension}}</td>
+        <td>{{nomina.pagoEmpleado | currency}}</td>
+        <td>{{nomina.salud | currency}}</td>
+        <td>{{nomina.pension | currency }}</td>
       </tr>
     </tbody>
   </table>
-  
+
 </div>

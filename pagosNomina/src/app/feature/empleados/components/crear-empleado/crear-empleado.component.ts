@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
 const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 100;
 const EMPLEADO_GUARDADO = "Empleado guardado exitosamente";
+const EMPLEADO_ACTUALIZADO = "Empleado actualizado exitosamente";
 
 @Component({
   selector: 'app-crear-empleado',
@@ -43,10 +44,10 @@ export class CrearEmpleadoComponent implements OnInit {
   crearEmpleado() {
     this.empleadoServices.guardar(this.empleadoForm.value).subscribe(
       response => {
+        this.mensaje = EMPLEADO_GUARDADO;
         console.log('Respuesta: ' + response);
         this.exito = true;
         this.error = false;
-        this.mensaje = EMPLEADO_GUARDADO;
       },
       err => { 
         this.mensaje = err.error.mensaje;
@@ -59,9 +60,10 @@ export class CrearEmpleadoComponent implements OnInit {
   actualizarEmpleado() {
     this.empleadoServices.actualizar(this.empleadoForm.value, this.router.snapshot.params.id).subscribe(
       response => {
+        this.mensaje = EMPLEADO_ACTUALIZADO;
         console.log('Respuesta: ' + response)
+        this.exito = true;
         this.error = false;
-        this.mensaje = EMPLEADO_GUARDADO;
       },
       err => { 
         this.mensaje = err.error.mensaje;
@@ -77,9 +79,9 @@ export class CrearEmpleadoComponent implements OnInit {
                                                         Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),
       apellido: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
                                                         Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)]),                                                  
-      cedula: new FormControl('', [Validators.required, Validators.max(100000000), Validators.min(1)]),
+      cedula: new FormControl('', [Validators.required, Validators.max(1000000000), Validators.min(100000)]),
       fechaNacimiento: new FormControl('', [Validators.required]),
-      salario: new FormControl('', [Validators.required, Validators.max(100000000), Validators.min(1)]),
+      salario: new FormControl('', [Validators.required, Validators.max(10000000000), Validators.min(1)]),
       cargo: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
                                                         Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)])
     });
